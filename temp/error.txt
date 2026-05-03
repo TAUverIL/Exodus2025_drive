@@ -1,0 +1,100 @@
+arm2025@arm2025-desktop:~/drive_wa01$ ros2 launch drive_controller ackermann.launch.py 
+[INFO] [launch]: All log files can be found below /home/arm2025/.ros/log/2026-05-03-20-29-01-421552-arm2025-desktop-12937
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [ros2_control_node-1]: process started with pid [12943]
+[INFO] [robot_state_publisher-2]: process started with pid [12945]
+[INFO] [spawner-3]: process started with pid [12947]
+[ros2_control_node-1] [WARN] [1777829341.893753208] [controller_manager]: [Deprecated] Passing the robot description parameter directly to the control_manager node is deprecated. Use '~/robot_description' topic from 'robot_state_publisher' instead.
+[ros2_control_node-1] [INFO] [1777829341.894253320] [resource_manager]: Loading hardware 'CubemarsSystem' 
+[ros2_control_node-1] [INFO] [1777829341.895916156] [resource_manager]: Initialize hardware 'CubemarsSystem' 
+[ros2_control_node-1] [INFO] [1777829341.896660308] [CubeMarsSystemHardware]: velocity limit for joint wheel1: 1353
+[ros2_control_node-1] [INFO] [1777829341.896688469] [CubeMarsSystemHardware]: acceleration limit for joint wheel1: 1804
+[ros2_control_node-1] [INFO] [1777829341.896884443] [CubeMarsSystemHardware]: velocity limit for joint wheel2: 1353
+[ros2_control_node-1] [INFO] [1777829341.896896347] [CubeMarsSystemHardware]: acceleration limit for joint wheel2: 1804
+[ros2_control_node-1] [INFO] [1777829341.896933116] [CubeMarsSystemHardware]: velocity limit for joint wheel3: 1353
+[ros2_control_node-1] [INFO] [1777829341.896941117] [CubeMarsSystemHardware]: acceleration limit for joint wheel3: 1804
+[ros2_control_node-1] [INFO] [1777829341.896957981] [CubeMarsSystemHardware]: velocity limit for joint wheel4: 1353
+[ros2_control_node-1] [INFO] [1777829341.896964733] [CubeMarsSystemHardware]: acceleration limit for joint wheel4: 1804
+[ros2_control_node-1] [INFO] [1777829341.896981758] [CubeMarsSystemHardware]: velocity limit for joint pivot_right: 1353
+[ros2_control_node-1] [INFO] [1777829341.896988446] [CubeMarsSystemHardware]: acceleration limit for joint pivot_right: 1804
+[ros2_control_node-1] [INFO] [1777829341.897003871] [CubeMarsSystemHardware]: velocity limit for joint pivot_left: 1353
+[ros2_control_node-1] [INFO] [1777829341.897010303] [CubeMarsSystemHardware]: acceleration limit for joint pivot_left: 1804
+[ros2_control_node-1] [INFO] [1777829341.897031359] [resource_manager]: Successful initialization of hardware 'CubemarsSystem'
+[ros2_control_node-1] [INFO] [1777829341.897338281] [resource_manager]: 'configure' hardware 'CubemarsSystem' 
+[ros2_control_node-1] [INFO] [1777829341.897576753] [CubeMarsSystemHardware]: Communication active
+[ros2_control_node-1] [INFO] [1777829341.897608562] [resource_manager]: Successful 'configure' of hardware 'CubemarsSystem'
+[ros2_control_node-1] [INFO] [1777829341.897630706] [resource_manager]: 'activate' hardware 'CubemarsSystem' 
+[ros2_control_node-1] [INFO] [1777829341.897640467] [resource_manager]: Successful 'activate' of hardware 'CubemarsSystem'
+[ros2_control_node-1] [INFO] [1777829341.916312161] [controller_manager]: update rate is 50 Hz
+[ros2_control_node-1] [INFO] [1777829341.916400867] [controller_manager]: Spawning controller_manager RT thread with scheduler priority: 50
+[ros2_control_node-1] [WARN] [1777829341.916613450] [controller_manager]: Could not enable FIFO RT scheduling policy: with error number <1>(Operation not permitted). See [https://control.ros.org/master/doc/ros2_control/controller_manager/doc/userdoc.html] for details on how to enable realtime scheduling.
+[robot_state_publisher-2] Error:   No link elements found in urdf file
+[robot_state_publisher-2]          at line 206 in ./urdf_parser/src/model.cpp
+[robot_state_publisher-2] Failed to parse robot description using: urdf_xml_parser/URDFXMLParser
+[robot_state_publisher-2] terminate called after throwing an instance of 'std::runtime_error'
+[robot_state_publisher-2]   what():  Unable to initialize urdf::model from robot description
+[ros2_control_node-1] [INFO] [1777829342.924849299] [controller_manager]: Loading controller 'joint_state_broadcaster'
+[spawner-3] [INFO] [1777829343.000093404] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[ros2_control_node-1] [INFO] [1777829343.002626636] [controller_manager]: Configuring controller 'joint_state_broadcaster'
+[ros2_control_node-1] [INFO] [1777829343.002956343] [joint_state_broadcaster]: 'joints' or 'interfaces' parameter is empty. All available state interfaces will be published
+[spawner-3] [INFO] [1777829343.079910773] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[ERROR] [robot_state_publisher-2]: process has died [pid 12945, exit code -6, cmd '/opt/ros/humble/lib/robot_state_publisher/robot_state_publisher --ros-args --params-file /tmp/launch_params_yp_np9p9'].
+[INFO] [spawner-3]: process has finished cleanly [pid 12947]
+[INFO] [spawner-4]: process started with pid [12995]
+[INFO] [spawner-5]: process started with pid [12997]
+[spawner-5] [INFO] [1777829343.959319378] [spawner_pivot_controller]: waiting for service /controller_manager/list_controllers to become available...
+[spawner-4] [INFO] [1777829344.011850061] [spawner_drive_controller]: waiting for service /controller_manager/list_controllers to become available...
+[ros2_control_node-1] [INFO] [1777829345.267278178] [controller_manager]: Loading controller 'pivot_controller'
+[spawner-5] [INFO] [1777829345.320201225] [spawner_pivot_controller]: Loaded pivot_controller
+[ros2_control_node-1] [INFO] [1777829345.323335436] [controller_manager]: Configuring controller 'pivot_controller'
+[ros2_control_node-1] [INFO] [1777829345.326279177] [pivot_controller]: configure successful
+[ros2_control_node-1] [INFO] [1777829345.343233664] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343345411] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.343421030] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343430118] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.343446054] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343452999] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.343459303] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343465415] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.343471367] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343548586] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.343927734] [CubeMarsSystemHardware]: start interface: pivot_right/position
+[ros2_control_node-1] [INFO] [1777829345.343941622] [CubeMarsSystemHardware]: start interface: pivot_left/position
+[ros2_control_node-1] [INFO] [1777829345.357213561] [pivot_controller]: activate successful
+[spawner-5] [INFO] [1777829345.379639165] [spawner_pivot_controller]: Configured and activated pivot_controller
+[INFO] [spawner-5]: process has finished cleanly [pid 12997]
+[ros2_control_node-1] [INFO] [1777829345.773561808] [controller_manager]: Loading controller 'drive_controller'
+[spawner-4] [INFO] [1777829345.841158214] [spawner_drive_controller]: Loaded drive_controller
+[ros2_control_node-1] [INFO] [1777829345.845304905] [controller_manager]: Configuring controller 'drive_controller'
+[ros2_control_node-1] [INFO] [1777829345.848919259] [drive_controller]: configure successful
+[ros2_control_node-1] [INFO] [1777829345.862355875] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862462662] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862487431] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862501256] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.862522728] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862536297] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862550025] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862562506] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.862575722] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862587754] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862598699] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862611275] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.862624492] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862636268] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862647052] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862657837] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.862671885] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862684365] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862695502] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862706670] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.862721007] [CubeMarsSystemHardware]: start interface: wheel1/velocity
+[ros2_control_node-1] [INFO] [1777829345.862732143] [CubeMarsSystemHardware]: start interface: wheel2/velocity
+[ros2_control_node-1] [INFO] [1777829345.862742831] [CubeMarsSystemHardware]: start interface: wheel3/velocity
+[ros2_control_node-1] [INFO] [1777829345.862754160] [CubeMarsSystemHardware]: start interface: wheel4/velocity
+[ros2_control_node-1] [INFO] [1777829345.877209976] [drive_controller]: activate successful
+[spawner-4] [INFO] [1777829345.900551993] [spawner_drive_controller]: Configured and activated drive_controller
+[INFO] [spawner-4]: process has finished cleanly [pid 12995]
+[INFO] [ackermann_drive_node.py-6]: process started with pid [13027]
+[ackermann_drive_node.py-6] /usr/bin/env: ‘python3\r’: No such file or directory
+[ERROR] [ackermann_drive_node.py-6]: process has died [pid 13027, exit code 127, cmd '/home/arm2025/drive_wa01/install/drive_controller/lib/drive_controller/ackermann_drive_node.py --ros-args -r __node:=ackermann_drive --params-file /home/arm2025/drive_wa01/install/drive_controller/share/drive_controller/config/ackermann.yaml'].
+

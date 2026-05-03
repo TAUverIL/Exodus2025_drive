@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot name="cubemars_test" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+  <!-- A dummy link is required for robot_state_publisher to parse the URDF -->
+  <link name="base_link"/>
+
   <!-- ros2_control block using CubeMarsSystemHardware -->
   <ros2_control name="CubemarsSystem" type="system">
     <hardware>
@@ -19,7 +22,7 @@
       <param name="acc_limit">10.0</param>
       <param name="enc_off">0.0</param>
       <param name="read_only">0</param>
-      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -34,7 +37,7 @@
       <param name="acc_limit">10.0</param>
       <param name="enc_off">0.0</param>
       <param name="read_only">0</param>
-      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -49,7 +52,7 @@
       <param name="acc_limit">10.0</param>
       <param name="enc_off">0.0</param>
       <param name="read_only">0</param>
-      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -64,7 +67,7 @@
       <param name="acc_limit">10.0</param>
       <param name="enc_off">0.0</param>
       <param name="read_only">0</param>
-      <command_interface name="position"/>
+      <command_interface name="velocity"/>
       <state_interface name="position"/>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
