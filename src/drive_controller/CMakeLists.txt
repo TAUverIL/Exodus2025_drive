@@ -28,6 +28,11 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
-
+# Install the Ackermann driver (Python) so it can be launched as an executable
+install(PROGRAMS
+  scripts/ackermann_drive_node.py
+  scripts/keyboard_teleop_node.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
