@@ -1,0 +1,91 @@
+"""Bring up ros2_control + Ackermann driver translating /cmd_vel into wheel/pivot commands."""
+
+from launch import LaunchDescription
+from launch.actions import RegisterEventHandler
+from launch.event_handlers import OnProcessExit
+from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
+from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
+from launch_ros.substitutions import FindPackageShare
+
+
+def generate_launch_description():
+    pkg = FindPackageShare("drive_controller")
+
+    robot_description_content = Command(
+        [
+            FindExecutable(name="xacro"),
+            " ",
+            PathJoinSubstitution([pkg, "urdf", "cubemars_test.ros2_control.urdf.xacro"]),
+        ]
+    )
+    robot_description = {
+        "robot_description": ParameterValue(robot_description_content, value_type=str)
+    }
+
+    controllers_yaml = PathJoinSubstitution([pkg, "config", "controllers.yaml"])
+    ackermann_yaml = PathJoinSubstitution([pkg, "config", "ackermann.yaml"])
+
+    control_node = Node(
+        package="controller_manager",
+        executable="ros2_control_node",
+        parameters=[robot_description, controllers_yaml],
+        output="both",
+    )
+
+    robot_state_publisher = Node(
+        package="robot_state_publisher",
+        executable="robot_state_publisher",
+        parameters=[robot_description],
+        output="screen",
+    )
+
+    jsb_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    )
+
+    drive_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["drive_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    pivot_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["pivot_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    ackermann_node = Node(
+        package="drive_controller",
+        executable="ackermann_drive_node.py",
+        name="ackermann_drive",
+        parameters=[ackermann_yaml],
+        output="screen",
+    )
+
+    delay_after_jsb = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=jsb_spawner,
+            on_exit=[drive_spawner, pivot_spawner],
+        )
+    )
+
+    delay_ackermann_after_drive = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=drive_spawner,
+            on_exit=[ackermann_node],
+        )
+    )
+
+    return LaunchDescription(
+        [
+            control_node,
+            robot_state_publisher,
+            jsb_spawner,
+            delay_after_jsb,
+            delay_ackermann_after_drive,
+        ]
+    )
