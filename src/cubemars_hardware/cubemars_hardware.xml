@@ -1,0 +1,16 @@
+<library path="cubemars_hardware">
+  <class name="cubemars_hardware/CubeMarsSystemHardware"
+         type="cubemars_hardware::CubeMarsSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      The ros2_control CubeMars plugin using a system hardware interface-type.
+    </description>
+  </class>
+  <class name="cubemars_hardware/FakeCubeMarsHardware"
+         type="cubemars_hardware::FakeCubeMarsHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Fake hardware interface for testing CubeMars system without real hardware.
+    </description>
+  </class>
+</library>

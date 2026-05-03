@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<robot name="cubemars_test" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ros2_control block using CubeMarsSystemHardware -->
+  <ros2_control name="CubemarsSystem" type="system">
+    <hardware>
+      <!-- This must match the plugin class name -->
+      <plugin>cubemars_hardware/CubeMarsSystemHardware</plugin>
+      <param name="can_interface">slcan0</param>  <!-- or can0 -->
+    </hardware>
+
+    <!-- Four actuator joints with CAN IDs 11-14 -->
+    <joint name="wheel1">
+      <param name="can_id">11</param>      <!-- CAN ID 11 (0x0B) -->
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.16</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="wheel2">
+      <param name="can_id">12</param>      <!-- CAN ID 12 (0x0C) -->
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.16</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="wheel3">
+      <param name="can_id">13</param>      <!-- CAN ID 13 (0x0D) -->
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.16</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="wheel4">
+      <param name="can_id">14</param>      <!-- CAN ID 14 (0x0E) -->
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.16</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <!-- Two pivot joints with CAN IDs 22-23 -->
+    <joint name="pivot_right">
+      <param name="can_id">22</param>      
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.105</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="pivot_left">
+      <param name="can_id">23</param>      
+      <param name="pole_pairs">21</param>
+      <param name="gear_ratio">9</param>
+      <param name="kt">0.105</param>
+      <param name="vel_limit">7.5</param>
+      <param name="acc_limit">10.0</param>
+      <param name="enc_off">0.0</param>
+      <param name="read_only">0</param>
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+</robot>
