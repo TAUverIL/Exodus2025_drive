@@ -32,6 +32,7 @@ install(
 install(PROGRAMS
   scripts/ackermann_drive_node.py
   scripts/keyboard_teleop_node.py
+  scripts/xbox_teleop_node.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

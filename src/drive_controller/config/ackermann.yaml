@@ -1,11 +1,11 @@
 ackermann_drive:
   ros__parameters:
     # Vehicle geometry — adjust to your rover's measurements
-    wheelbase: 0.5         # distance front axle <-> rear axle [m]
-    track_width: 0.4       # distance left wheel <-> right wheel [m]
+    wheelbase: 0.797         # distance front axle <-> rear axle [m]
+    track_width: 0.633       # distance left wheel <-> right wheel [m]
     wheel_radius: 0.1      # driven wheel radius [m]
-    max_steer_angle: 0.7854  # mechanical steering limit [rad] (~45 deg)
-    max_wheel_speed: 7.5     # motor-side angular speed limit [rad/s]
+    max_steer_angle: 1.0472  # mechanical steering limit [rad] (~45 deg)
+    max_wheel_speed: 10.0     # motor-side angular speed limit [rad/s]
 
     # Topics
     cmd_vel_topic: /cmd_vel
@@ -18,7 +18,7 @@ ackermann_drive:
     wheel_order: [0, 1, 2, 3]
 
     # Per-wheel direction (+1 normal, -1 if a motor is mirrored)
-    wheel_direction: [1.0, 1.0, 1.0, 1.0]
+    wheel_direction: [-1.0,  1.0, 1.0, -1.0]
 
     # Index of pivot_right / pivot_left inside /pivot_controller/commands.
     # controllers.yaml lists [pivot_right, pivot_left] -> 0=right, 1=left.

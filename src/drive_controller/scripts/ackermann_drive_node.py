@@ -73,8 +73,8 @@ class AckermannDrive(Node):
         self.declare_parameter("cmd_timeout", 0.5)        # s; zero output if no cmd
         self.declare_parameter("publish_rate", 50.0)      # Hz
         # Invert wheel direction sign per wheel index in the published array
-        # (e.g. if right-side motors are mounted mirrored, set [1, -1, 1, -1])
-        self.declare_parameter("wheel_direction", [1.0, 1.0, 1.0, 1.0])
+        # (e.g. if left-side motors are mounted mirrored, set [-1, 1, -1, 1])
+        self.declare_parameter("wheel_direction", [-1.0, 1.0, -1.0, 1.0])
 
         self.L = float(self.get_parameter("wheelbase").value)
         self.W = float(self.get_parameter("track_width").value)

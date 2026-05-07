@@ -42,6 +42,7 @@ if sys.platform == "win32":
             if msvcrt.kbhit():
                 ch = msvcrt.getwch()
                 return ch
+                
             time.sleep(0.01)
         return ""
 else:
