@@ -188,11 +188,14 @@ class AckermannDrive(Node):
                 r_outer = R + W / 2.0
                 delta_outer = math.atan2(L, r_outer)
 
-            # Wheel ground speeds (use signed angular rate w to preserve direction)
-            v_rear_inner = w * (R - W / 2.0)
-            v_rear_outer = w * (R + W / 2.0)
-            v_front_inner = w * math.hypot(R - W / 2.0, L)
-            v_front_outer = w * math.hypot(R + W / 2.0, L)
+            # Wheel ground speeds — magnitude follows |w|*radius,
+            # sign follows v (direction of travel, independent of turn direction)
+            speed_sign = math.copysign(1.0, v)
+            abs_w = abs(w)
+            v_rear_inner  = speed_sign * abs_w * (R - W / 2.0)
+            v_rear_outer  = speed_sign * abs_w * (R + W / 2.0)
+            v_front_inner = speed_sign * abs_w * math.hypot(R - W / 2.0, L)
+            v_front_outer = speed_sign * abs_w * math.hypot(R + W / 2.0, L)
 
             # Steering signs: positive angle = steer left (CCW yaw)
             if turn_left:
