@@ -11,8 +11,8 @@ Controls (hold-to-send, momentum-style):
     space : stop linear AND angular immediately
     x     : zero linear speed only
     z     : zero angular rate only
-    +/-   : scale linear step
-    [ / ] : scale angular step
+    u / j : scale linear step
+    i / k : scale angular step
     q     : quit
 
 Each key press changes a setpoint that is republished at `publish_rate` Hz
@@ -76,8 +76,8 @@ Keyboard teleop for Ackermann rover
   space : full stop
   x     : zero linear
   z     : zero angular
-  + / - : larger / smaller linear step
-  [ / ] : smaller / larger angular step
+  u / j : larger / smaller linear step
+  i / k : larger / smaller angular step
   q     : quit
 """
 
@@ -156,13 +156,13 @@ class KeyboardTeleop(Node):
                         self.linear = 0.0
                     elif k == "z":
                         self.angular = 0.0
-                    elif k == "+" or k == "=":
+                    elif k == "u":
                         self.lin_step = min(self.lin_step * 1.25, self.max_lin)
-                    elif k == "-" or k == "_":
+                    elif k == "j":
                         self.lin_step = max(self.lin_step * 0.8, 0.01)
-                    elif k == "]":
+                    elif k == "i":
                         self.ang_step = min(self.ang_step * 1.25, self.max_ang)
-                    elif k == "[":
+                    elif k == "k":
                         self.ang_step = max(self.ang_step * 0.8, 0.01)
                     elif k == "q" or k == "\x03":  # q or Ctrl-C
                         self._stop = True

@@ -75,6 +75,9 @@ class AckermannDrive(Node):
         # Invert wheel direction sign per wheel index in the published array
         # (e.g. if left-side motors are mounted mirrored, set [-1, 1, -1, 1])
         self.declare_parameter("wheel_direction", [-1.0, 1.0, -1.0, 1.0])
+        # Invert pivot direction per pivot in published array [right, left]
+        # (set to -1 if positive command rotates the wheel opposite to ROS yaw convention)
+        self.declare_parameter("pivot_direction", [1.0, 1.0])
 
         self.L = float(self.get_parameter("wheelbase").value)
         self.W = float(self.get_parameter("track_width").value)
@@ -87,11 +90,14 @@ class AckermannDrive(Node):
         self.cmd_timeout = float(self.get_parameter("cmd_timeout").value)
         self.publish_rate = float(self.get_parameter("publish_rate").value)
         self.wheel_dir = [float(s) for s in self.get_parameter("wheel_direction").value]
+        self.pivot_dir = [float(s) for s in self.get_parameter("pivot_direction").value]
 
         if len(self.wheel_order) != 4 or sorted(self.wheel_order) != [0, 1, 2, 3]:
             raise ValueError("wheel_order must be a permutation of [0,1,2,3]")
         if len(self.wheel_dir) != 4:
             raise ValueError("wheel_direction must have 4 elements")
+        if len(self.pivot_dir) != 2:
+            raise ValueError("pivot_direction must have 2 elements [right, left]")
         if self.r <= 0.0:
             raise ValueError("wheel_radius must be > 0")
 
@@ -246,8 +252,8 @@ class AckermannDrive(Node):
 
         pivot_msg = Float64MultiArray()
         pivot_data = [0.0, 0.0]
-        pivot_data[self.pivot_right_index] = float(steer_right)
-        pivot_data[self.pivot_left_index] = float(steer_left)
+        pivot_data[self.pivot_right_index] = self.pivot_dir[self.pivot_right_index] * float(steer_right)
+        pivot_data[self.pivot_left_index] = self.pivot_dir[self.pivot_left_index] * float(steer_left)
         pivot_msg.data = pivot_data
         self.pivot_pub.publish(pivot_msg)
 

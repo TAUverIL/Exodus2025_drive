@@ -25,6 +25,10 @@ ackermann_drive:
     pivot_right_index: 0
     pivot_left_index: 1
 
+    # Per-pivot direction sign [right, left]. Set to -1 if the motor rotates
+    # opposite to ROS yaw convention (e.g. right-stick-right turns vehicle left).
+    pivot_direction: [-1.0, -1.0]
+
     # Watchdog / loop
     cmd_timeout: 0.5       # zero output if no /cmd_vel received for this long [s]
     publish_rate: 50.0     # Hz

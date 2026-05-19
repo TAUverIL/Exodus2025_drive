@@ -46,14 +46,22 @@ def generate_launch_description():
     drive_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["drive_controller", "--controller-manager", "/controller_manager"],
+        arguments=[
+            "drive_controller",
+            "--controller-manager", "/controller_manager",
+            "--param-file", robot_controllers,
+        ],
     )
 
     # Pivot Controller Spawner (start after joint_state_broadcaster)
     pivot_controller_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["pivot_controller", "--controller-manager", "/controller_manager"],
+        arguments=[
+            "pivot_controller",
+            "--controller-manager", "/controller_manager",
+            "--param-file", robot_controllers,
+        ],
     )
 
     # Delay start of controllers after joint_state_broadcaster

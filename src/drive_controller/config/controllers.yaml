@@ -5,15 +5,12 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    # Main drive controller
     drive_controller:
       type: velocity_controllers/JointGroupVelocityController
 
-    # Pivot controller
     pivot_controller:
       type: position_controllers/JointGroupPositionController
 
-# Config for main drive
 drive_controller:
   ros__parameters:
     joints:
@@ -27,7 +24,6 @@ drive_controller:
       - position
       - velocity
 
-# Config for pivots
 pivot_controller:
   ros__parameters:
     joints:
